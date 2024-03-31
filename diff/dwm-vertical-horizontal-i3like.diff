@@ -1,0 +1,25 @@
+diff --git a/config.def.h b/config.def.h
+index a2ac963..cd0b16b 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -68,7 +68,6 @@ static Key keys[] = {
+ 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+ 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+ 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+ 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+ 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+ 	{ MODKEY,                       XK_Return, zoom,           {0} },
+diff --git a/dwm.c b/dwm.c
+index 5646a5c..123f5e0 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -973,7 +973,7 @@ grabkeys(void)
+ void
+ incnmaster(const Arg *arg)
+ {
+-	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
++	selmon->nmaster = !selmon->nmaster;
+ 	arrange(selmon);
+ }
+ 
