@@ -109,7 +109,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *fileexplorer[] = { "pcmanfm" , NULL };
 static const char *chromium[] = { "chromium" , NULL };
 static const char *screenshot[] = { "flameshot", "screen", "--path", "/home/victoria/Imágenes/" , NULL };
-
+#include "exitdwm.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
