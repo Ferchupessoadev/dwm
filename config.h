@@ -1,5 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-#include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 1;         /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
@@ -58,8 +56,8 @@ static const char window_border[] = "#000000";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { onedark.inactive, onedark.bg, window_border },
-	[SchemeSel]  = { onedark.active, onedark.focus,  onedark.focus },
+	[SchemeNorm] = { nord.inactive, nord.bg, window_border },
+	[SchemeSel]  = { nord.active, nord.focus, nord.focus },
 };
 
 /* tagging */
@@ -109,19 +107,30 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *fileexplorer[] = { "pcmanfm" , NULL };
 static const char *chromium[] = { "chromium" , NULL };
 static const char *screenshot[] = { "flameshot", "screen", "--path", "/home/victoria/Imágenes/" , NULL };
+static const char *volumeup[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL };
+static const char *volumedown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL };
+static const char *volumemute[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "toggle", NULL };
+
 #include "exitdwm.c"
+#include <X11/XF86keysym.h>
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = chromium } },
+	// volume
+	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volumeup } },
+	{ 0,							XF86XK_AudioLowerVolume,	spawn,			{.v = volumedown } },
+	{ 0,							XF86XK_AudioMute,			spawn,			{.v = volumemute }},
+	// screenshot
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
+	// file explorer
 	{ MODKEY,                       XK_e,      spawn,          {.v = fileexplorer } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
