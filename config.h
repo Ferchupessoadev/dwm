@@ -1,19 +1,34 @@
 /* appearance */
-static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int gappx = 10;   /* gaps between windows */
-static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int systraypinning =
-    0; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor
-          X */
-static const unsigned int systrayonleft =
-    0; /* 0: systray in the right corner, >0: systray on left of status text */
-static const unsigned int systrayspacing = 2; /* systray spacing */
-static const int systraypinningfailfirst =
-    1; /* 1: if pinning fails, display systray on the first monitor, False:
-          display systray on the last monitor*/
-static const int showsystray = 1; /* 0 means no systray */
-static const int showbar = 1;     /* 0 means no bar */
-static const int topbar = 1;      /* 0 means bottom bar */
+
+/* border pixel of windows */
+static const unsigned int borderpx = 1;
+
+/* gaps between windows */
+static const unsigned int gappx = 10;
+
+/* snap pixel */
+static const unsigned int snap = 32;
+
+/* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systraypinning = 0;
+
+/* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayonleft = 0;
+
+/* systray spacing */
+static const unsigned int systrayspacing = 2;
+/* 1: if pinning fails, display systray on the first monitor, False:
+   display systray on the last monitor*/
+static const int systraypinningfailfirst = 1;
+
+/* 0 means no systray */
+static const int showsystray = 1;
+
+/* 0 means no bar */
+static const int showbar = 1;
+
+/* 0 means bottom bar */
+static const int topbar = 1;
 static const char *fonts[] = {"JetBrains Mono Nerd Font:size=12"};
 static const char dmenufont[] = "JetBrains Mono:size=11";
 static const char col_gray1[] = "#222222";
@@ -29,25 +44,33 @@ struct Theme {
   char *focus;
 };
 
-static const struct Theme material = {.inactive = "#4c566a",
-                                      .active = "#ffffff",
-                                      .bg = "#0f101a",
-                                      .focus = "#a151d3"};
+static const struct Theme material = {
+    .inactive = "#4c566a",
+    .active = "#ffffff",
+    .bg = "#0f101a",
+    .focus = "#a151d3",
+};
 
-static const struct Theme onedark = {.inactive = "#4c566a",
-                                     .active = "#ffffff",
-                                     .bg = "#1e2127",
-                                     .focus = "#E06C75"};
+static const struct Theme onedark = {
+    .inactive = "#4c566a",
+    .active = "#ffffff",
+    .bg = "#1e2127",
+    .focus = "#E06C75",
+};
 
-static const struct Theme nord = {.inactive = "#4c566a",
-                                  .active = "#ffffff",
-                                  .bg = "#2e3440",
-                                  .focus = "#81a1c1"};
+static const struct Theme nord = {
+    .inactive = "#4c566a",
+    .active = "#ffffff",
+    .bg = "#2e3440",
+    .focus = "#81a1c1",
+};
 
-static const struct Theme monokai_pro = {.inactive = "#727072",
-                                         .active = "#2d2a2e",
-                                         .bg = "#2d2a2e",
-                                         .focus = "#a9dc76"};
+static const struct Theme monokai_pro = {
+    .inactive = "#727072",
+    .active = "#2d2a2e",
+    .bg = "#2d2a2e",
+    .focus = "#a9dc76",
+};
 
 static const char window_border[] = "#000000";
 
@@ -71,18 +94,32 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.5; /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;   /* number of clients in master area */
-static const int resizehints =
-    1; /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen =
-    1; /* 1 will force focus on the fullscreen window */
+/* factor of master area size [0.05..0.95] */
+static const float mfact = 0.5;
+
+/* number of clients in master area */
+static const int nmaster = 1;
+
+/* 1 means respect size hints in tiled resizals */
+static const int resizehints = 1;
+
+/* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 1;
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    {"[]=", tile}, /* first entry is default */
-    {"><>", NULL}, /* no layout function means floating behavior */
-    {"[M]", monocle},
+    {
+        "[]=",
+        tile,
+    }, /* first entry is default */
+    {
+        "><>",
+        NULL,
+    }, /* no layout function means floating behavior */
+    {
+        "[M]",
+        monocle,
+    },
 };
 
 /* key definitions */
@@ -93,31 +130,52 @@ static const Layout layouts[] = {
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
       {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd)                                                             \
-  {                                                                            \
-    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
-  }
-
 #define STATUSBAR "dwmblocks"
 
 /* commands */
-static char dmenumon[2] =
-    "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {"dmenu_run", "-l", "10", NULL};
-static const char *termcmd[] = {"st", NULL};
-static const char *fileexplorer[] = {"pcmanfm", NULL};
-static const char *chromium[] = {"chromium", NULL};
-static const char *screenshot[] = {"flameshot", "screen", "--path",
-                                   "/home/ferchodev/Imágenes/screenshot", NULL};
-static const char *volumeup[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
-                                 "+10%", NULL};
-static const char *volumedown[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
-                                   "-10%", NULL};
-static const char *volumemute[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
-                                   "toggle", NULL};
+/* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[2] = "0";
 
-#include "exitdwm.c"
+static const char *dmenucmd[] = {
+    "dmenu_run",
+    "-l",
+    "10",
+    NULL,
+};
+
+static const char *termcmd[] = {
+    "st",
+    NULL,
+};
+
+static const char *fileexplorer[] = {
+    "pcmanfm",
+    NULL,
+};
+
+static const char *chromium[] = {
+    "chromium",
+    NULL,
+};
+
+static const char *screenshot[] = {
+    "flameshot", "screen", "--path", "/home/ferchodev/Imágenes/screenshot",
+    NULL,
+};
+
+static const char *volumeup[] = {
+    "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL,
+};
+
+static const char *volumedown[] = {
+    "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL,
+};
+
+static const char *volumemute[] = {
+    "pactl", "set-sink-volume", "@DEFAULT_SINK@", "toggle", NULL,
+};
+
+#include "./exitdwm.c"
 #include <X11/XF86keysym.h>
 static const Key keys[] = {
     /* modifier                     key        function        argument */
