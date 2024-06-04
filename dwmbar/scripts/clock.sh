@@ -18,7 +18,8 @@ case "$clock" in
 	"12") icon="󱑖" ;;
 esac
 
-
-clock=$(date "+  %d/%m/%Y $icon %I:%M%p")
-clock_format="^c#ffffff^$clock "
+calendar_icon="   "
+clock_date=$(date "+ %d/%m/%Y")
+clock_time=$(date "+ %I:%M%p")
+clock_format="^c#ffff80^ [ $calendar_icon $clock_date $icon $clock_time ]"
 echo $clock_format
