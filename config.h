@@ -29,7 +29,7 @@ static const int showbar = 1;
 
 /* 0 means bottom bar */
 static const int topbar = 1;
-static const char *fonts[] = {"JetBrains Mono Nerd Font:size=12"};
+static const char *fonts[] = {"JetBrains Mono Nerd Font:size=10"};
 static const char dmenufont[] = "JetBrains Mono:size=11";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
@@ -81,7 +81,7 @@ static const char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "󰙯", "󰉋", ""};
+static const char *tags[] = {"", "", "", "", "󰙯", "󰉋"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -159,8 +159,7 @@ static const char *chromium[] = {
 };
 
 static const char *screenshot[] = {
-    "flameshot", "screen", "--path", "/home/ferchodev/Imágenes/screenshot",
-    NULL,
+    "flameshot", "screen", "--path", "~/Imágenes/screenshot", NULL,
 };
 
 static const char *volumeup[] = {
