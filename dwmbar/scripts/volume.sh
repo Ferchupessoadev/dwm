@@ -16,7 +16,7 @@ vol() {
 }
 
 str() {
-    echo "^c#888888^$1"
+    echo "^c#888888^^b#000000^$1"
 }
 
 if [ "$(pactl list sinks | awk '/Mute:/ {print $2}')" = "yes" ]; then
@@ -27,9 +27,9 @@ fi
 
 v=$(vol)
 if [ "$v" -gt "100" ]; then 
-    str "[  100% ]"
+    str "  100% "
 elif [ "$v" -ge "50" ]; then 
-    str "[ 󰕾 $v% ]"
+    str " 󰕾 $v% "
 else 
-    str "[  $v% ]"
+    str "  $v% "
 fi
