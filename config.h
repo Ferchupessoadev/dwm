@@ -70,6 +70,34 @@ static const struct Theme monokai_pro = {
     .focus = "#a9dc76",
 };
 
+static const struct Theme gruvbox = {
+    .inactive = "#928374",
+    .active = "#fbf1c7",
+    .bg = "#282828",
+    .focus = "#83a598",
+};
+
+static const struct Theme solarized_dark = {
+    .inactive = "#657b83",
+    .active = "#93a1a1",
+    .bg = "#002b36",
+    .focus = "#b58900",
+};
+
+static const struct Theme dracula = {
+    .inactive = "#6272a4",
+    .active = "#f8f8f2",
+    .bg = "#282a36",
+    .focus = "#ff79c6",
+};
+
+static const struct Theme tomorrow_night = {
+    .inactive = "#4d4d4c",
+    .active = "#ffffff",
+    .bg = "#1d1f21",
+    .focus = "#cc6666",
+};
+
 static const char window_border[] = "#000000";
 
 static const char *colors[][3] = {
@@ -85,6 +113,22 @@ static const char *colors[][3] = {
 
     { monokai_pro.inactive, monokai_pro.bg, window_border },
     { monokai_pro.active, monokai_pro.focus,  monokai_pro.focus },
+
+		// Tema Gruvbox
+    { gruvbox.inactive, gruvbox.bg, window_border },
+    { gruvbox.active, gruvbox.focus, gruvbox.focus },
+
+    // Tema Solarized Dark
+    { solarized_dark.inactive, solarized_dark.bg, window_border },
+    { solarized_dark.active, solarized_dark.focus, solarized_dark.focus },
+
+    // Tema Dracula
+    { dracula.inactive, dracula.bg, window_border },
+    { dracula.active, dracula.focus, dracula.focus },
+
+    // Tema Tomorrow Night
+    { tomorrow_night.inactive, tomorrow_night.bg, window_border },
+    { tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus },
 };
 
 /* tagging */
