@@ -208,7 +208,7 @@ static const char *chromium[] = {
 };
 
 static const char *screenshot[] = {
-    "flameshot", "screen", "--path", "/home/victoria/Imágenes/", NULL,
+    "flameshot", "screen", "--path", "$HOME/Imágenes/", NULL,
 };
 
 static const char *volumeup[] = {
