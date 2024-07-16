@@ -2,10 +2,10 @@
 static const unsigned int borderpx = 1;
 
 /* gaps between windows */
-static const unsigned int gappx = 10;
+static const unsigned int gappx = 6;
 
 /* snap pixel */
-static const unsigned int snap = 32;
+static const unsigned int snap = 0;
 
 /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systraypinning = 0;
@@ -73,13 +73,22 @@ static const struct Theme monokai_pro = {
 static const char window_border[] = "#000000";
 
 static const char *colors[][3] = {
-    /*               fg         bg         border   */
-    [SchemeNorm] = {onedark.inactive, onedark.bg, window_border},
-    [SchemeSel] = {onedark.active, onedark.focus, onedark.focus},
+    // fg                 bg             border   
+    { material.inactive, material.bg, window_border },
+    { material.active, material.focus,  material.focus  },
+
+    { onedark.inactive, onedark.bg, window_border },
+    { onedark.active, onedark.focus,  onedark.focus  },
+
+    { nord.inactive, nord.bg, window_border },
+    { nord.active, nord.focus,  nord.focus  },
+
+    { monokai_pro.inactive, monokai_pro.bg, window_border },
+    { monokai_pro.active, monokai_pro.focus,  monokai_pro.focus },
 };
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "󰙯", "󰉋"};
+static const char *tags[] = {"   ", "  ","   " , "  ", "  "};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -136,8 +145,6 @@ static char dmenumon[2] = "0";
 
 static const char *dmenucmd[] = {
     "dmenu_run",
-    "-l",
-    "10",
     NULL,
 };
 
@@ -157,7 +164,7 @@ static const char *chromium[] = {
 };
 
 static const char *screenshot[] = {
-    "flameshot", "screen", "--path", "~/Imágenes/screenshot", NULL,
+    "flameshot", "screen", "--path", "/home/victoria/Imágenes/", NULL,
 };
 
 static const char *volumeup[] = {
@@ -191,6 +198,8 @@ static const Key keys[] = {
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
+		{ MODKEY|ShiftMask,             XK_t,      schemeToggle,   {0} },
+		{ MODKEY|ShiftMask,             XK_z,      schemeCycle,    {0} },
     {MODKEY, XK_p, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
