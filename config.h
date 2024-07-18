@@ -101,38 +101,42 @@ static const struct Theme tomorrow_night = {
 static const char window_border[] = "#000000";
 
 static const char *colors[][3] = {
-    // fg                 bg             border   
-    { material.inactive, material.bg, window_border },
-    { material.active, material.focus,  material.focus  },
+    // fg                 bg             border
+    // Tema Material
+    {material.inactive, material.bg, window_border},
+    {material.active, material.focus, material.focus},
 
-    { onedark.inactive, onedark.bg, window_border },
-    { onedark.active, onedark.focus,  onedark.focus  },
+    // Tema One Dark
+    {onedark.inactive, onedark.bg, window_border},
+    {onedark.active, onedark.focus, onedark.focus},
 
-    { nord.inactive, nord.bg, window_border },
-    { nord.active, nord.focus,  nord.focus  },
+    // Tema Nord
+    {nord.inactive, nord.bg, window_border},
+    {nord.active, nord.focus, nord.focus},
 
-    { monokai_pro.inactive, monokai_pro.bg, window_border },
-    { monokai_pro.active, monokai_pro.focus,  monokai_pro.focus },
+    // Tema Monokai Pro
+    {monokai_pro.inactive, monokai_pro.bg, window_border},
+    {monokai_pro.active, monokai_pro.focus, monokai_pro.focus},
 
-		// Tema Gruvbox
-    { gruvbox.inactive, gruvbox.bg, window_border },
-    { gruvbox.active, gruvbox.focus, gruvbox.focus },
+    // Tema Gruvbox
+    {gruvbox.inactive, gruvbox.bg, window_border},
+    {gruvbox.active, gruvbox.focus, gruvbox.focus},
 
     // Tema Solarized Dark
-    { solarized_dark.inactive, solarized_dark.bg, window_border },
-    { solarized_dark.active, solarized_dark.focus, solarized_dark.focus },
+    {solarized_dark.inactive, solarized_dark.bg, window_border},
+    {solarized_dark.active, solarized_dark.focus, solarized_dark.focus},
 
     // Tema Dracula
-    { dracula.inactive, dracula.bg, window_border },
-    { dracula.active, dracula.focus, dracula.focus },
+    {dracula.inactive, dracula.bg, window_border},
+    {dracula.active, dracula.focus, dracula.focus},
 
     // Tema Tomorrow Night
-    { tomorrow_night.inactive, tomorrow_night.bg, window_border },
-    { tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus },
+    {tomorrow_night.inactive, tomorrow_night.bg, window_border},
+    {tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus},
 };
 
 /* tagging */
-static const char *tags[] = {"   ", "  ","   " , "  ", "  "};
+static const char *tags[] = {"", "", " ", "", "", "󰙯"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -160,15 +164,15 @@ static const int lockfullscreen = 1;
 static const Layout layouts[] = {
     /* symbol     arrange function */
     {
-        "[]=",
+        "  ",
         tile,
     }, /* first entry is default */
     {
-        "><>",
+        "  ",
         NULL,
     }, /* no layout function means floating behavior */
     {
-        "[M]",
+        "  ",
         monocle,
     },
 };
@@ -242,8 +246,8 @@ static const Key keys[] = {
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
-		{ MODKEY|ShiftMask,             XK_t,      schemeToggle,   {0} },
-		{ MODKEY|ShiftMask,             XK_z,      schemeCycle,    {0} },
+    {MODKEY | ShiftMask, XK_t, schemeToggle, {0}},
+    {MODKEY | ShiftMask, XK_z, schemeCycle, {0}},
     {MODKEY, XK_p, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
@@ -276,7 +280,7 @@ static const Button buttons[] = {
     /* click                event mask      button          function argument */
     {ClkLtSymbol, 0, Button1, setlayout, {0}},
     {ClkLtSymbol, 0, Button3, setlayout, {.v = &layouts[2]}},
-		{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+    {ClkWinTitle, 0, Button2, zoom, {0}},
     {ClkStatusText, 0, Button1, sigstatusbar, {.i = 1}},
     {ClkStatusText, 0, Button2, sigstatusbar, {.i = 2}},
     {ClkStatusText, 0, Button3, sigstatusbar, {.i = 3}},
