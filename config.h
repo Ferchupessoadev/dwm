@@ -1,5 +1,5 @@
 /* border pixel of windows */
-static const unsigned int borderpx = 1;
+static const unsigned int borderpx = 2;
 
 /* gaps between windows */
 static const unsigned int gappx = 6;
@@ -27,7 +27,7 @@ static const int showbar = 1;
 
 /* 0 means bottom bar */
 static const int topbar = 1;
-static const char *fonts[] = {"JetBrains Mono Nerd Font:size=11"};
+static const char *fonts[] = {"JetBrains Mono Nerd Font:size=12"};
 static const char dmenufont[] = "JetBrains Mono:size=11";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
@@ -164,15 +164,15 @@ static const int lockfullscreen = 1;
 static const Layout layouts[] = {
     /* symbol     arrange function */
     {
-        "  ",
+        " ",
         tile,
     }, /* first entry is default */
     {
-        "  ",
+        " ",
         NULL,
     }, /* no layout function means floating behavior */
     {
-        "  ",
+        "",
         monocle,
     },
 };
@@ -212,7 +212,7 @@ static const char *chromium[] = {
 };
 
 static const char *screenshot[] = {
-    "flameshot", "screen", "--path", "$HOME/Imágenes/", NULL,
+    "flameshot", "screen", "--path", "$HOME/Imágenes/screenshot/", NULL,
 };
 
 static const char *volumeup[] = {
