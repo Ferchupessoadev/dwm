@@ -46,7 +46,7 @@ static const struct Theme material = {
     .inactive = "#4c566a",
     .active = "#ffffff",
     .bg = "#0f101a",
-    .focus = "#a151d3",
+    .focus = "#0f101a",
 };
 
 static const struct Theme onedark = {
