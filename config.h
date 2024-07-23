@@ -196,6 +196,14 @@ static const char *dmenucmd[] = {
     NULL,
 };
 
+static const char *launcher[] = {
+    "dmenu_run_desktop",
+	"-c",
+	"-p",
+	" ",
+    NULL,
+};
+
 static const char *termcmd[] = {
     "st",
     NULL,
@@ -232,6 +240,7 @@ static const char *volumemute[] = {
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_d, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_r, spawn, {.v = launcher}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_g, spawn, {.v = chromium}},
     // volume
