@@ -1,40 +1,30 @@
 /* border pixel of windows */
-static const unsigned int borderpx = 2;
+static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int gappx = 6; /* gaps between windows */
+static const unsigned int snap = 0; /* snap pixel */
 
-/* gaps between windows */
-static const unsigned int gappx = 6;
+/* systray */
+static const unsigned int systraypinning = 0; // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X
+static const unsigned int systrayonleft = 0; // 0: systray in the right corner, >0: systray on left of status text 
+static const unsigned int systrayspacing = 2; // systray spacing
+static const int systraypinningfailfirst = 1; //1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor
+static const int showsystray = 1; //0 means no systray
 
-/* snap pixel */
-static const unsigned int snap = 0;
 
-/* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systraypinning = 0;
+static const int showbar = 1; // 0 means no bar 
+static const int topbar = 1; // 0 means bottom bar
 
-/* 0: systray in the right corner, >0: systray on left of status text */
-static const unsigned int systrayonleft = 0;
+static const char *fonts[] = {"JetBrains Mono Nerd Font:size=12"}; // fonts
+static const char dmenufont[] = "JetBrains Mono:size=11"; // dmenu font
 
-/* systray spacing */
-static const unsigned int systrayspacing = 2;
-/* 1: if pinning fails, display systray on the first monitor, False:
-   display systray on the last monitor*/
-static const int systraypinningfailfirst = 1;
-
-/* 0 means no systray */
-static const int showsystray = 1;
-
-/* 0 means no bar */
-static const int showbar = 1;
-
-/* 0 means bottom bar */
-static const int topbar = 1;
-static const char *fonts[] = {"JetBrains Mono Nerd Font:size=12"};
-static const char dmenufont[] = "JetBrains Mono:size=11";
+// colors
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
 static const char col_gray4[] = "#eeeeee";
 static const char col_cyan[] = "#005577";
 
+// themes
 struct Theme {
   char *inactive;
   char *active;
@@ -100,6 +90,7 @@ static const struct Theme tomorrow_night = {
 
 static const char window_border[] = "#000000";
 
+// colors 
 static const char *colors[][3] = {
     // fg                 bg             border
     // Tema Material
@@ -135,8 +126,7 @@ static const char *colors[][3] = {
     {tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus},
 };
 
-/* tagging */
-static const char *tags[] = {"", "", " ", "", "", "󰙯"};
+static const char *tags[] = {"",""," ","","","󰙯"}; // tags
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -146,21 +136,14 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     isfloating   monitor */
     {"Gimp", NULL, NULL, 0, 1, -1},
     {"Firefox", NULL, NULL, 1 << 8, 0, -1},
-    { "mpv",            NULL,       "video0 - mpv",    0,            1,           1 },
 };
 
 /* layout(s) */
-/* factor of master area size [0.05..0.95] */
-static const float mfact = 0.5;
 
-/* number of clients in master area */
-static const int nmaster = 1;
-
-/* 1 means respect size hints in tiled resizals */
-static const int resizehints = 1;
-
-/* 1 will force focus on the fullscreen window */
-static const int lockfullscreen = 1;
+static const float mfact = 0.5; // factor of master area size [0.05..0.95] 
+static const int nmaster = 1; // number of clients in master area */
+static const int resizehints = 1; // 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; // 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
@@ -242,14 +225,15 @@ static const Key keys[] = {
     {MODKEY, XK_r, spawn, {.v = launcher}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_g, spawn, {.v = chromium}},
-    // volume
-    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeup}},
-    {0, XF86XK_AudioLowerVolume, spawn, {.v = volumedown}},
-    {0, XF86XK_AudioMute, spawn, {.v = volumemute}},
-    // screenshot
-    {0, XK_Print, spawn, {.v = screenshot}},
-    // file explorer
-    {MODKEY, XK_e, spawn, {.v = fileexplorer}},
+
+    /* volume control */
+    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeup}}, // volume up
+    {0, XF86XK_AudioLowerVolume, spawn, {.v = volumedown}}, // volume down
+    {0, XF86XK_AudioMute, spawn, {.v = volumemute}}, // mute
+    {0, XK_Print, spawn, {.v = screenshot}}, // screenshot
+    
+    {MODKEY, XK_e, spawn, {.v = fileexplorer}}, // file explorer
+	
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
@@ -265,7 +249,7 @@ static const Key keys[] = {
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-	{ MODKEY,                       XK_s,      togglesticky,      {0} }, // toggle sticky
+	{MODKEY, XK_s, togglesticky, {0} }, // toggle sticky
     {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY, XK_0, view, {.ui = ~0}},
