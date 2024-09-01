@@ -1,21 +1,25 @@
 /* border pixel of windows */
-static const unsigned int borderpx = 2; /* border pixel of windows */
-static const unsigned int gappx = 6; /* gaps between windows */
-static const unsigned int snap = 0; /* snap pixel */
+static const unsigned int borderpx = 3; /* border pixel of windows */
+static const unsigned int gappx = 1;    /* gaps between windows */
+static const unsigned int snap = 0;     /* snap pixel */
 
 /* systray */
-static const unsigned int systraypinning = 0; // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X
-static const unsigned int systrayonleft = 0; // 0: systray in the right corner, >0: systray on left of status text 
+static const unsigned int systraypinning =
+    0; // 0: sloppy systray follows selected monitor, >0: pin systray to monitor
+       // X
+static const unsigned int systrayonleft =
+    0; // 0: systray in the right corner, >0: systray on left of status text
 static const unsigned int systrayspacing = 2; // systray spacing
-static const int systraypinningfailfirst = 1; //1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor
-static const int showsystray = 1; //0 means no systray
+static const int systraypinningfailfirst =
+    1; // 1: if pinning fails, display systray on the first monitor, False:
+       // display systray on the last monitor
+static const int showsystray = 1; // 0 means no systray
 
+static const int showbar = 1; // 0 means no bar
+static const int topbar = 1;  // 0 means bottom bar
 
-static const int showbar = 1; // 0 means no bar 
-static const int topbar = 1; // 0 means bottom bar
-
-static const char *fonts[] = {"JetBrains Mono Nerd Font:size=12"}; // fonts
-static const char dmenufont[] = "JetBrains Mono:size=11"; // dmenu font
+static const char *fonts[] = {"JetBrains Mono Nerd Font:size=11"}; // fonts
+static const char dmenufont[] = "JetBrains Mono:size=11";          // dmenu font
 
 // colors
 static const char col_gray1[] = "#222222";
@@ -90,20 +94,20 @@ static const struct Theme tomorrow_night = {
 
 static const char window_border[] = "#000000";
 
-// colors 
+// colors
 static const char *colors[][3] = {
     // fg                 bg             border
-    // Tema Material
-    {material.inactive, material.bg, window_border},
-    {material.active, material.focus, material.focus},
+    // Tema Nord
+    {nord.inactive, nord.bg, window_border},
+    {nord.active, nord.focus, nord.focus},
 
     // Tema One Dark
     {onedark.inactive, onedark.bg, window_border},
     {onedark.active, onedark.focus, onedark.focus},
 
-    // Tema Nord
-    {nord.inactive, nord.bg, window_border},
-    {nord.active, nord.focus, nord.focus},
+    // Tema Material
+    {material.inactive, material.bg, window_border},
+    {material.active, material.focus, material.focus},
 
     // Tema Monokai Pro
     {monokai_pro.inactive, monokai_pro.bg, window_border},
@@ -126,7 +130,7 @@ static const char *colors[][3] = {
     {tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus},
 };
 
-static const char *tags[] = {"",""," ","","","󰙯"}; // tags
+static const char *tags[] = {"1", "2", "3", "4"}; // tags
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -140,10 +144,12 @@ static const Rule rules[] = {
 
 /* layout(s) */
 
-static const float mfact = 0.5; // factor of master area size [0.05..0.95] 
-static const int nmaster = 1; // number of clients in master area */
-static const int resizehints = 1; // 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; // 1 will force focus on the fullscreen window */
+static const float mfact = 0.5; // factor of master area size [0.05..0.95]
+static const int nmaster = 1;   // number of clients in master area */
+static const int resizehints =
+    1; // 1 means respect size hints in tiled resizals */
+static const int lockfullscreen =
+    1; // 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
@@ -182,7 +188,7 @@ static const char *dmenucmd[] = {
 
 static const char *launcher[] = {
     "dmenu_run_desktop",
-	"-c",
+    "-c",
     NULL,
 };
 
@@ -192,7 +198,7 @@ static const char *termcmd[] = {
 };
 
 static const char *fileexplorer[] = {
-    "pcmanfm",
+    "file_manager.sh",
     NULL,
 };
 
@@ -227,13 +233,13 @@ static const Key keys[] = {
     {MODKEY, XK_g, spawn, {.v = chromium}},
 
     /* volume control */
-    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeup}}, // volume up
+    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeup}},   // volume up
     {0, XF86XK_AudioLowerVolume, spawn, {.v = volumedown}}, // volume down
-    {0, XF86XK_AudioMute, spawn, {.v = volumemute}}, // mute
-    {0, XK_Print, spawn, {.v = screenshot}}, // screenshot
-    
+    {0, XF86XK_AudioMute, spawn, {.v = volumemute}},        // mute
+    {0, XK_Print, spawn, {.v = screenshot}},                // screenshot
+
     {MODKEY, XK_e, spawn, {.v = fileexplorer}}, // file explorer
-	
+
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
@@ -249,7 +255,7 @@ static const Key keys[] = {
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-	{MODKEY, XK_s, togglesticky, {0} }, // toggle sticky
+    {MODKEY, XK_s, togglesticky, {0}}, // toggle sticky
     {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY, XK_0, view, {.ui = ~0}},
