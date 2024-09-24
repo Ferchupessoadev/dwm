@@ -30,7 +30,7 @@ sudo make clean install
 then copy the file autostart.sh to ~/.local/share/dwm/autostart.sh
 
 ```bash
-cp autostart.sh ~/.local/share/dwm/autostart.sh
+cp -r autostart.sh ~/.local/share/dwm/autostart.sh
 ```
 
 then copy dwmbar folder to .config/dwmbar
