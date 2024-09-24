@@ -2,7 +2,7 @@
 
 ![Build de dwm](./screenshot_dwm.png)
 
-## How to install dwm in debian 12
+## How to install dwm
 
 First, install dependencies
 
