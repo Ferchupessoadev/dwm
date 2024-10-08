@@ -16,7 +16,7 @@ then clone this repo
 
 ```bash
 
-git clone https://github.com/Ferchuepessoadev/dwm.git
+git clone https://github.com/Ferchupessoadev/dwm.git
 
 ```
 
