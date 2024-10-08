@@ -30,6 +30,7 @@ sudo make clean install
 then copy the file autostart.sh to ~/.local/share/dwm/autostart.sh
 
 ```bash
+mkdir -p ~/.local/share/dwm
 cp -r autostart.sh ~/.local/share/dwm/autostart.sh
 ```
 
