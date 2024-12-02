@@ -1,7 +1,7 @@
 /* border pixel of windows */
-static const unsigned int borderpx = 3; /* border pixel of windows */
-static const unsigned int gappx = 1;    /* gaps between windows */
-static const unsigned int snap = 0;     /* snap pixel */
+static const unsigned int borderpx = 1; /* border pixel of windows */
+static const unsigned int gappx = 3;    /* gaps between windows */
+static const unsigned int snap = 3;     /* snap pixel */
 
 /* systray */
 static const unsigned int systraypinning =
@@ -101,7 +101,7 @@ static const char *colors[][3] = {
     {nord.inactive, nord.bg, window_border},
     {nord.active, nord.focus, nord.focus},
 
-    // Tema One Dark
+    // Tema Onedark
     {onedark.inactive, onedark.bg, window_border},
     {onedark.active, onedark.focus, onedark.focus},
 
@@ -131,7 +131,7 @@ static const char *colors[][3] = {
 };
 
 static const char *tags[] = {"󰖟", "", "", "󰙯", "",
-                             "",  "", "", ""}; // tags
+                             "",  "", "", " "}; // tags
 
 static const Rule rules[] = {
     /* xprop(1):
