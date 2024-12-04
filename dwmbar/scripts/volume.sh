@@ -16,7 +16,7 @@ vol() {
 }
 
 str() {
-    echo "^c#888888^^b#000000^$1"
+    echo "$1"
 }
 
 if [ "$(pactl list sinks | awk '/Mute:/ {print $2}')" = "yes" ]; then

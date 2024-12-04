@@ -14,9 +14,7 @@ static const char *dmenucmd[] = {
 };
 
 static const char *launcher[] = {
-    "dmenu_run_desktop",
-    "-c",
-    NULL,
+    "dmenu_run_desktop", "-c", "-l", "10", NULL,
 };
 
 static const char *termcmd[] = {

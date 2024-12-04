@@ -1,18 +1,7 @@
 #!/bin/bash
 
-COL_VERMEL="#32a852"
-COL_TARONJA="#f0660a"
-COL_GROC="#f0dd0a"
-COL_BLANC="#ff0000"
 
-colors() {
-    [ "$1" -lt "15" ] && printf "$COL_VERMELL" && exit
-    [ "$1" -lt "35" ] && printf "$COL_TARONJA" && exit
-    [ "$1" -lt "60" ] && printf "$COL_GROC"    && exit
-    printf "$COL_BLANC"
-}
-
-icona() {
+icon() {
     [ "$1" -lt "15" ] && printf "" && exit
     [ "$1" -lt "35" ] && printf "" && exit
     [ "$1" -lt "60" ] && printf "" && exit
@@ -20,8 +9,8 @@ icona() {
     printf ""
 }
 
-IC_CURRENT="^c$COL_GROC^"
-IC_PLUG="^c$COL_BLANC^"
+IC_CURRENT=""
+IC_PLUG=""
 
 acpi > /tmp/acpi_info
 while read line; do
@@ -29,8 +18,7 @@ while read line; do
 
     if echo "$line" | grep "Discharging," > /dev/null; then
         # DESCARREGANT
-        printf "^c$(colors "$percent")^"
-        printf "$(icona "$percent") "
+        printf "$(icon "$percent") "
         printf "$percent%%"
 
         time_left="$(echo "$line" | awk '{print $5}' | sed "s/:[0-9][0-9]$//g")"
@@ -42,7 +30,7 @@ while read line; do
 
     elif ! echo "$line" | grep "Unknown" > /dev/null; then
         # CARREGANT
-        printf "$IC_CURRENT $IC_PLUG $percent%%"
+        printf "$IC_PLUG $percent%%"
 
     fi
 done < /tmp/acpi_info
