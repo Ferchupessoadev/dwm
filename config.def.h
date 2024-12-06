@@ -1,7 +1,7 @@
 /* border pixel of windows */
 static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int gappx = 3;    /* gaps between windows */
-static const unsigned int snap = 3;     /* snap pixel */
+static const unsigned int gappx = 1;    /* gaps between windows */
+static const unsigned int snap = 1;     /* snap pixel */
 
 /* systray */
 static const unsigned int systraypinning =
