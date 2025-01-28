@@ -1,14 +1,36 @@
-# My build of dwm - dynamic window manager
+# My build of Dwm - Dynamic window manager
 
-![Build de dwm](./screenshot_dwm.png)
+![build of Dwm](./screenshot_dwm.png)
 
 ## How to install dwm
 
-First, install dependencies
+### First, install dependencies
 
+## Debian/Ubuntu
 ```bash
 
 sudo apt install build-essential git libx11-dev libxft-dev libxinerama-dev
+
+```
+
+## Archlinux
+```bash
+
+sudo pacman -S base-devel git libx11 libxft libxinerama
+
+```
+
+## Fedora
+```bash
+
+sudo dnf install @development-tools git libX11-devel libXft-devel libXinerama-devel
+
+```
+
+## void linux
+```bash
+
+sudo xbps-install -S base-devel git libX11-devel libXft-devel libXinerama-devel
 
 ```
 
@@ -41,5 +63,3 @@ then copy dwmbar folder to .config/dwmbar
 cp -r dwmbar ~/.config/dwmbar
 
 ```
-
-finally, run dwm
