@@ -43,9 +43,9 @@ struct Theme {
 
 static const struct Theme material = {
     .inactive = "#4c566a",
-    .active = "#ffffff",
+    .active = "#1e1e2e",
     .bg = "#0f101a",
-    .focus = "#0f101a",
+    .focus = "#e2e4e5",
 };
 
 static const struct Theme onedark = {
@@ -102,21 +102,25 @@ static const char window_border[] = "#000000";
 // colors
 static const char *colors[][3] = {
     // fg                 bg             border
+    // Tema Material
+    {material.inactive, material.bg, window_border},
+    {material.active, material.focus, material.focus},
 
-    // Tema Monokai Pro
-    {monokai_pro.inactive, monokai_pro.bg, window_border},
-    {monokai_pro.active, monokai_pro.focus, monokai_pro.focus},
+    // Tema Dracula
+    {dracula.inactive, dracula.bg, window_border},
+    {dracula.active, dracula.focus, dracula.focus},
+
     // Tema Nord
     {nord.inactive, nord.bg, window_border},
     {nord.active, nord.focus, nord.focus},
 
+    // Tema Monokai Pro
+    {monokai_pro.inactive, monokai_pro.bg, window_border},
+    {monokai_pro.active, monokai_pro.focus, monokai_pro.focus},
+
     // Tema Onedark
     {onedark.inactive, onedark.bg, window_border},
     {onedark.active, onedark.focus, onedark.focus},
-
-    // Tema Material
-    {material.inactive, material.bg, window_border},
-    {material.active, material.focus, material.focus},
 
     // Tema Gruvbox
     {gruvbox.inactive, gruvbox.bg, window_border},
@@ -126,17 +130,12 @@ static const char *colors[][3] = {
     {solarized_dark.inactive, solarized_dark.bg, window_border},
     {solarized_dark.active, solarized_dark.focus, solarized_dark.focus},
 
-    // Tema Dracula
-    {dracula.inactive, dracula.bg, window_border},
-    {dracula.active, dracula.focus, dracula.focus},
-
     // Tema Tomorrow Night
     {tomorrow_night.inactive, tomorrow_night.bg, window_border},
     {tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus},
 };
 
-static const char *tags[] = {"", "", "", "", "",
-                             "", "", "", ""}; // tags
+static const char *tags[] = {"", "", "", "", ""}; // tags
 
 static const Rule rules[] = {
     /* xprop(1):
