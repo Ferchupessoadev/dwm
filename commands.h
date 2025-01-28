@@ -1,5 +1,6 @@
 // commands.h
 #include <stdlib.h>
+#include <unistd.h>
 
 #ifndef COMMANDS_H
 #define COMMANDS_H
@@ -32,8 +33,8 @@ static const char *chromium[] = {
     NULL,
 };
 
-static const char *screenshot[] = {
-    "flameshot", "screen", "--path", "$HOME/Imágenes/screenshot/", NULL,
+static char *screenshot[] = {
+    "flameshot", "screen", "--path", NULL, NULL,
 };
 
 static const char *volumeup[] = {

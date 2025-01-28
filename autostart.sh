@@ -1,5 +1,6 @@
 #!/bin/bash
+# This file is for autostart programs
+
 volumeicon &
-feh --bg-scale ~/Wallpapers/03.jpg &  
 bash ~/.config/dwmbar/bar.sh &
 nm-applet

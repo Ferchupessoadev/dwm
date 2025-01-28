@@ -42,6 +42,7 @@
 #include <X11/Xft/Xft.h>
 
 #include "drw.h"
+#include "dwm.h"
 #include "util.h"
 
 /* macros */
@@ -111,13 +112,6 @@ enum {
   ClkRootWin,
   ClkLast
 }; /* clicks */
-
-typedef union {
-  int i;
-  unsigned int ui;
-  float f;
-  const void *v;
-} Arg;
 
 typedef struct {
   unsigned int click;
@@ -244,7 +238,6 @@ static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void pop(Client *c);
 static void propertynotify(XEvent *e);
-static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void removesystrayicon(Client *i);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
@@ -976,7 +969,7 @@ void drawbar(Monitor *m) {
         drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
     drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
     if (occ & 1 << i)
-      drw_rect(drw, x + boxw, 0, w - (2 * boxw + 1), boxw - 2,
+      drw_rect(drw, x + boxw, 1, 10, boxw - 2,
                m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
                urg & 1 << i);
     x += w;
@@ -1225,6 +1218,16 @@ void grabbuttons(Client *c, int focused) {
   }
 }
 
+// This function modifies the commands.h screenshot array to use $HOME or /tmp
+// as the default directory
+void setup_screenshot_command() {
+  char *home = getenv("HOME");
+
+  if (home != NULL && screenshot[3] == NULL) {
+    screenshot[3] = (char *)home;
+  }
+}
+
 void grabkeys(void) {
   updatenumlockmask();
   {
@@ -1239,6 +1242,7 @@ void grabkeys(void) {
     syms = XGetKeyboardMapping(dpy, start, end - start + 1, &skip);
     if (!syms)
       return;
+    setup_screenshot_command();
     for (k = start; k <= end; k++)
       for (i = 0; i < LENGTH(keys); i++)
         /* skip modifier codes, we do that ourselves */

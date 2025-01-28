@@ -1,3 +1,8 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+#include "dwm.h"
+#include "exitdwm.h"
+
 /* border pixel of windows */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int gappx = 1;    /* gaps between windows */
@@ -9,7 +14,7 @@ static const unsigned int systraypinning =
        // X
 static const unsigned int systrayonleft =
     0; // 0: systray in the right corner, >0: systray on left of status text
-static const unsigned int systrayspacing = 2; // systray spacing
+static const unsigned int systrayspacing = 1; // systray spacing
 static const int systraypinningfailfirst =
     1; // 1: if pinning fails, display systray on the first monitor, False:
        // display systray on the last monitor
@@ -97,6 +102,10 @@ static const char window_border[] = "#000000";
 // colors
 static const char *colors[][3] = {
     // fg                 bg             border
+
+    // Tema Monokai Pro
+    {monokai_pro.inactive, monokai_pro.bg, window_border},
+    {monokai_pro.active, monokai_pro.focus, monokai_pro.focus},
     // Tema Nord
     {nord.inactive, nord.bg, window_border},
     {nord.active, nord.focus, nord.focus},
@@ -108,10 +117,6 @@ static const char *colors[][3] = {
     // Tema Material
     {material.inactive, material.bg, window_border},
     {material.active, material.focus, material.focus},
-
-    // Tema Monokai Pro
-    {monokai_pro.inactive, monokai_pro.bg, window_border},
-    {monokai_pro.active, monokai_pro.focus, monokai_pro.focus},
 
     // Tema Gruvbox
     {gruvbox.inactive, gruvbox.bg, window_border},
@@ -130,8 +135,8 @@ static const char *colors[][3] = {
     {tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus},
 };
 
-static const char *tags[] = {"󰖟", "", "", "󰙯", "",
-                             "",  "", "", " "}; // tags
+static const char *tags[] = {"", "", "", "", "",
+                             "", "", "", ""}; // tags
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -178,7 +183,6 @@ static const Layout layouts[] = {
 
 #define STATUSBAR "dwmblocks"
 
-#include "./exitdwm.c"
 #include "commands.h"
 #include <X11/XF86keysym.h>
 static const Key keys[] = {
@@ -221,7 +225,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {MODKEY, XK_minus, setgaps, {.i = -1}},
-    {MODKEY, XK_equal, setgaps, {.i = +1}},
+    {MODKEY, XK_plus, setgaps, {.i = +1}},
     {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
@@ -247,3 +251,5 @@ static const Button buttons[] = {
     {ClkTagBar, MODKEY, Button1, tag, {0}},
     {ClkTagBar, MODKEY, Button3, toggletag, {0}},
 };
+
+#endif
