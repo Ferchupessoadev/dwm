@@ -41,7 +41,6 @@ install: all config.h
 	mkdir -p ${DESTDIR}${AUTOSTARTDIR}/dwm
 	cp -r autostart.sh ${DESTDIR}${AUTOSTARTDIR}/dwm
 	chmod 755 ${DESTDIR}${AUTOSTARTDIR}/dwm/autostart.sh
-	cp -r dwmbar ~/.config/dwmbar
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
