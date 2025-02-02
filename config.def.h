@@ -183,22 +183,40 @@ static const Layout layouts[] = {
 
 #define STATUSBAR "dwmblocks"
 
-#include "commands.h"
+// Helper for spawning shell commands
+#define SHCMD(cmd)                                                             \
+  {                                                                            \
+    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
+  }
+
+/* commands */
+/* component of dmenucmd, manipulated in spawn() */
+static char *dmenucmd[] = {"dmenu_run"};
+static char dmenumon[2] = "0";
+
+static char *screenshot[] = {
+    "flameshot", "screen", "--path", NULL, NULL,
+};
+
 #include <X11/XF86keysym.h>
+
 static const Key keys[] = {
     /* modifier                     key        function        argument */
-    {MODKEY, XK_d, spawn, {.v = dmenucmd}},
-    {MODKEY, XK_r, spawn, {.v = launcher}},
-    {MODKEY, XK_Return, spawn, {.v = termcmd}},
-    {MODKEY, XK_g, spawn, {.v = chromium}},
+    {MODKEY, XK_d, spawn, SHCMD("dmenu_run")},
+    {MODKEY, XK_r, spawn, SHCMD("dmenu_run_desktop -c -l 10")},
+    {MODKEY, XK_Return, spawn, SHCMD("st")},
+    {MODKEY, XK_g, spawn, SHCMD("chromium")},
 
     /* volume control */
-    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeup}},   // volume up
-    {0, XF86XK_AudioLowerVolume, spawn, {.v = volumedown}}, // volume down
-    {0, XF86XK_AudioMute, spawn, {.v = volumemute}},        // mute
-    {0, XK_Print, spawn, {.v = screenshot}},                // screenshot
+    {0, XF86XK_AudioRaiseVolume, spawn,
+     SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +10%")},
+    {0, XF86XK_AudioLowerVolume, spawn,
+     SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -10%")}, // volume down
+    {0, XF86XK_AudioMute, spawn,
+     SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")}, // mute
+    {0, XK_Print, spawn, SHCMD("flameshot screen")},      // screenshot
 
-    {MODKEY, XK_e, spawn, {.v = fileexplorer}}, // file explorer
+    {MODKEY, XK_e, spawn, SHCMD("pcmanfm")}, // file explorer
 
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
