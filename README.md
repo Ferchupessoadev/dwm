@@ -63,3 +63,18 @@ then copy dwmbar folder to .config/dwmbar
 cp -r dwmbar ~/.config/dwmbar
 
 ```
+
+# How create a shortcut in dwm
+
+```C
+// config.def.h
+
+static const Key keys[] = {
+    // Other key bindings
+    // Change the key combination and the command in the SHCMD macro
+
+    { MODKEY, XK_Return, spawn, SHCMD("st") },
+
+    // Other key bindings
+};
+```
