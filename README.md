@@ -34,7 +34,7 @@ sudo xbps-install -S base-devel git libX11-devel libXft-devel libXinerama-devel
 
 ```
 
-then clone this repo
+clone this repo
 
 ```bash
 
@@ -42,21 +42,21 @@ git clone https://github.com/Ferchupessoadev/dwm.git
 
 ```
 
-then build and install
+build and install
 
 ```bash
 cd dwm
 sudo make clean install
 ```
 
-then copy the file autostart.sh to ~/.local/share/dwm/autostart.sh
+copy the file autostart.sh to ~/.local/share/dwm/autostart.sh because dwm will run it
 
 ```bash
 mkdir -p ~/.local/share/dwm
 cp -r autostart.sh ~/.local/share/dwm/autostart.sh
 ```
 
-then copy dwmbar folder to .config/dwmbar
+copy dwmbar folder to .config/dwmbar because dwm will run it with the autostart.sh
 
 ```bash
 
@@ -64,7 +64,7 @@ cp -r dwmbar ~/.config/dwmbar
 
 ```
 
-# How create a shortcut in dwm
+## How create a shortcut in dwm
 
 ```C
 // config.def.h
