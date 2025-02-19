@@ -1,80 +1,78 @@
-# My build of Dwm - Dynamic window manager
+# My Build of DWM - Dynamic Window Manager
 
-![build of Dwm](./screenshot_dwm.png)
+![build of DWM](./screenshot_dwm.png)
 
-## How to install dwm
+## How to Install DWM
 
-### First, install dependencies
+### First, Install Dependencies
 
-## Debian/Ubuntu
+#### Debian/Ubuntu
 ```bash
-
 sudo apt install build-essential git libx11-dev libxft-dev libxinerama-dev
-
 ```
 
-## Archlinux
+#### Arch Linux
 ```bash
-
 sudo pacman -S base-devel git libx11 libxft libxinerama
-
 ```
 
-## Fedora
+#### Fedora
 ```bash
-
 sudo dnf install @development-tools git libX11-devel libXft-devel libXinerama-devel
-
 ```
 
-## void linux
+#### Void Linux
 ```bash
-
 sudo xbps-install -S base-devel git libX11-devel libXft-devel libXinerama-devel
-
 ```
 
-clone this repo
-
+### Clone This Repository
 ```bash
-
 git clone https://github.com/Ferchupessoadev/dwm.git
-
 ```
 
-build and install
-
+### Build and Install
 ```bash
 cd dwm
 sudo make clean install
 ```
 
-copy the file autostart.sh to ~/.local/share/dwm/autostart.sh because dwm will run it
-
+### Autostart Scripts
+Copy the `autostart.sh` file to `~/.local/share/dwm/autostart.sh` because DWM will run it:
 ```bash
 mkdir -p ~/.local/share/dwm
 cp -r autostart.sh ~/.local/share/dwm/autostart.sh
 ```
 
-copy dwmbar folder to .config/dwmbar because dwm will run it with the autostart.sh
-
+Copy the `dwmbar` folder to `~/.config/dwmbar` because `autostart.sh` will run it:
 ```bash
-
 cp -r dwmbar ~/.config/dwmbar
-
 ```
 
-## How create a shortcut in dwm
+## Running DWM with a Display Manager
+If you use a display manager (e.g., LightDM, GDM, SDDM), create a session file:
+
+Create `/usr/share/xsessions/dwm.desktop` with the following content:
+```ini
+[Desktop Entry]
+Name=DWM
+Comment=Dynamic Window Manager
+Exec=dwm
+Type=Application
+```
+
+## How to Create a Shortcut in DWM
 
 ```C
 // config.def.h
 
 static const Key keys[] = {
-    // Other key bindings
-    // Change the key combination and the command in the SHCMD macro
-
-    { MODKEY, XK_Return, spawn, SHCMD("st") },
-
-    // Other key bindings
+    /* modifier                     key        function        argument */
+    {MODKEY, XK_d, spawn, SHCMD("dmenu_run")},
+    {MODKEY, XK_r, spawn, SHCMD("dmenu_run_desktop -c -l 10")},
+    {MODKEY, XK_Return, spawn, SHCMD("st")},
+    {MODKEY, XK_g, spawn, SHCMD("chromium")},
+    // others keys
 };
 ```
+
