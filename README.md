@@ -39,6 +39,8 @@ sudo dnf install @development-tools git libX11-devel libXft-devel libXinerama-de
 sudo xbps-install -S base-devel git libX11-devel libXft-devel libXinerama-devel
 ```
 
+Once they install the dependencies with their package manager or by compiling the dependencies, they can install dwm by running the following command:
+
 ### Clone This Repository
 ```bash
 git clone https://github.com/Ferchupessoadev/dwm.git
