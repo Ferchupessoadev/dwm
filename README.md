@@ -19,25 +19,25 @@ The following dependencies are required to build DWM:
 - `libXft`: fonts in X.
 - `libXinerama`: support for multiple monitors.
 
-#### Debian/Ubuntu
-```bash
-sudo apt install build-essential git libx11-dev libxft-dev libxinerama-dev
-```
-
-#### Arch Linux
-```bash
-sudo pacman -S base-devel git libx11 libxft libxinerama
-```
-
-#### Fedora
-```bash
-sudo dnf install @development-tools git libX11-devel libXft-devel libXinerama-devel
-```
-
-#### Void Linux
-```bash
-sudo xbps-install -S base-devel git libX11-devel libXft-devel libXinerama-devel
-```
+-#### Debian/Ubuntu
+-```bash
+-sudo apt install build-essential git libx11-dev libxft-dev libxinerama-dev
+-```
+-
+-#### Arch Linux
+-```bash
+-sudo pacman -S base-devel git libx11 libxft libxinerama
+-```
+-
+-#### Fedora
+-```bash
+-sudo dnf install @development-tools git libX11-devel libXft-devel libXinerama-devel
+-```
+-
+-#### Void Linux
+-```bash
+-sudo xbps-install -S base-devel git libX11-devel libXft-devel libXinerama-devel
+-```
 
 ### Clone This Repository
 ```bash
