@@ -27,9 +27,9 @@ fi
 
 v=$(vol)
 if [ "$v" -gt "100" ]; then 
-    str "  100% "
+    str "  100%"
 elif [ "$v" -ge "50" ]; then 
-    str " 󰕾 $v% "
+    str " 󰕾 $v%"
 else 
-    str "  $v% "
+    str "  $v%"
 fi
