@@ -62,7 +62,6 @@ Type=Application
 ```
 
 ## How to Create a Shortcut in DWM
-
 ```C
 // config.def.h
 
