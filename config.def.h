@@ -135,7 +135,7 @@ static const char *colors[][3] = {
     {tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus},
 };
 
-static const char *tags[] = {"", "", "", "", "", ""}; // tags
+static const char *tags[] = {"", "", "", "", "" }; // tags
 //
 
 static const Rule rules[] = {
