@@ -88,3 +88,4 @@ static const Key keys[] = {
 };
 ```
 
+For more information, visit the [official web of DWM](https://dwm.suckless.org/).
