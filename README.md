@@ -4,7 +4,7 @@ DWM (Dynamic Window Manager) is a minimalist and highly efficient window manager
 This build of DWM is configured to suit my workflow, featuring custom scripts and keybindings, optimized for a seamless experience. In this guide, you'll find step-by-step instructions for installing, configuring, and customizing DWM to make it your own. Whether you're a DWM veteran or a first-time user, this guide should help you get the most out of this powerful window manager.
 
 ## Screenshot
-![build of DWM](./screenshot_dwm.png)
+![build of DWM](./screenshot.png)
 
 ## How to Install DWM
 
