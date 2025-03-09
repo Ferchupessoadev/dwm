@@ -76,7 +76,7 @@ Exec=dwm
 Type=Application
 ```
 
-## How to Create a Shortcut in DWM
+## How to Create a Key Shortcut in DWM
 ```C
 // config.def.h
 
