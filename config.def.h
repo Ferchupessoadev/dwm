@@ -1,11 +1,11 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-#include "dwm.h"
-#include "exitdwm.h"
+#include "./dwm.h"
+#include "./exitdwm.h"
 
 /* border pixel of windows */
 static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int gappx = 1;    /* gaps between windows */
+static const unsigned int gappx = 3;    /* gaps between windows */
 static const unsigned int snap = 1;     /* snap pixel */
 
 /* systray */
@@ -247,7 +247,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_e, exitdwm(), {0}},
+            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_e, exitdwm, {0}},
 };
 
 /* button definitions */

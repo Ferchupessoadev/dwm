@@ -1,11 +1,11 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-#include "dwm.h"
-#include "exitdwm.h"
+#include "./dwm.h"
+#include "./exitdwm.h"
 
 /* border pixel of windows */
 static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int gappx = 1;    /* gaps between windows */
+static const unsigned int gappx = 3;    /* gaps between windows */
 static const unsigned int snap = 1;     /* snap pixel */
 
 /* systray */
@@ -135,7 +135,7 @@ static const char *colors[][3] = {
     {tomorrow_night.active, tomorrow_night.focus, tomorrow_night.focus},
 };
 
-static const char *tags[] = {"", "", "", "", "" }; // tags
+static const char *tags[] = {"", "", "", "", ""}; // tags
 //
 
 static const Rule rules[] = {
