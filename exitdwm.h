@@ -31,6 +31,6 @@
 #define S_FORMAT(ACTION) S_##ACTION##_ICON " " S_##ACTION
 #define S_FORMAT_CLEAR "sed 's/^..//'"
 
-void exitdwm(void);
+void exitdwm();
 
 #endif // EXITDWM_H

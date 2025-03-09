@@ -1,3 +1,4 @@
+#include "dwm.h"
 #include "exitdwm.h"
 #include <stdio.h>
 #include <stdlib.h>
